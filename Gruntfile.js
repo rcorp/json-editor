@@ -43,6 +43,8 @@ module.exports = function(grunt) {
           'src/editors/upload.js',
           'src/editors/checkbox.js',
           'src/editors/array/selectize.js',
+          'src/editors/superuploader.js',
+          'src/editors/gallery.js',
 
           // All the themes and iconlibs
           'src/theme.js',
