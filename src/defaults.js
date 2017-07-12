@@ -228,6 +228,23 @@ $each(JSONEditor.defaults.editors, function(i,editor) {
 });
 
 // Set the default resolvers
+
+// super-uploader editors
+JSONEditor.defaults.resolvers.unshift(function(schema) {
+  if(schema.type === "superuploader" && schema.format === "superuploader") {
+    return "superuploader";
+  }
+  // If no valid editor is returned, the next resolver function will be used
+});
+
+// gallery editor editors
+JSONEditor.defaults.resolvers.unshift(function(schema) {
+  if(schema.type === "gallery" && schema.format === "gallery") {
+    return "gallery";
+  }
+  // If no valid editor is returned, the next resolver function will be used
+});
+
 // Use "multiple" as a fall back for everything
 JSONEditor.defaults.resolvers.unshift(function(schema) {
   if(typeof schema.type !== "string") return "multiple";
@@ -310,20 +327,4 @@ JSONEditor.defaults.resolvers.unshift(function(schema) {
 JSONEditor.defaults.resolvers.unshift(function(schema) {
   // If this schema uses `oneOf` or `anyOf`
   if(schema.oneOf || schema.anyOf) return "multiple";
-});
-
-// super-uploader editors
-JSONEditor.defaults.resolvers.unshift(function(schema) {
-  if(schema.type === "super-uploader" && schema.format === "super-uploader") {
-    return "super-uploader";
-  }
-  // If no valid editor is returned, the next resolver function will be used
-});
-
-// gallery editor editors
-JSONEditor.defaults.resolvers.unshift(function(schema) {
-  if(schema.type === "gallery" && schema.format === "gallery") {
-    return "gallery";
-  }
-  // If no valid editor is returned, the next resolver function will be used
 });
