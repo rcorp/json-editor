@@ -9,13 +9,14 @@ JSONEditor.defaults.editors.superuploader = JSONEditor.AbstractEditor.extend({
 
   build: function() {
     var self = this;
+    console.log('self', self);
     if(!this.options.compact) {
       this.label = this.header = this.theme.getCheckboxLabel(this.getTitle());
     }
     if(this.schema.description) this.description = this.theme.getFormInputDescription(this.schema.description);
     if(this.options.compact) this.container.className += ' compact';
 
-    this.input = this.theme.getCheckbox();
+    this.input = this.theme.getSuperUploader();
     this.control = this.theme.getFormControl(this.label, this.input, this.description);
 
     if(this.schema.readOnly || this.schema.readonly) {
